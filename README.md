@@ -1,2 +1,2 @@
 # BOF_Script
-this refo contains unsafe
+this refo contains unsafe code
