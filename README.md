@@ -1,14 +1,12 @@
 # BOF_Script
 this refo contains unsafe code
-# Explanation
--사전작업-
+# 사전작업
 1. 작업을 수행할 계정으로 접속합니다.
 2. /home/계정 폴더로 이동합니다.
 3. 깃허브에 있는 파일들을 옮깁니다.
 4. 스크립트를 실행합니다.
 
--스크립트-
-
+# 스크립트
 #!/bin/bash
 gcc -o vuln vuln.c //vuln.c 컴파일
 
