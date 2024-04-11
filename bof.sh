@@ -1,6 +1,6 @@
 #!/bin/bash
 gcc -o vuln vuln.c
-chmod +s vunl
+chmod +s vuln
 gcc -o ./getaddr getaddr.c -lc -ldl
 /bin/bash2
 export PATH=$PATH:.
