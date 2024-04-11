@@ -8,6 +8,7 @@ this refo contains unsafe code
 4. 스크립트를 실행합니다.
 
 -스크립트-
+
 #!/bin/bash
 gcc -o vuln vuln.c //vuln.c 컴파일
 
