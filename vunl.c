@@ -5,5 +5,5 @@ int main(int argc, char *argv[]){
 		exit(-1);
 	}
 	strcpy(buffer, argv[1]);
-	printf(¡°your input is %s\n¡±, buffer);
+	printf(¡°%s\n¡±, buffer);
 }
