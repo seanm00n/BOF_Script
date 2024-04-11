@@ -6,7 +6,7 @@ this refo contains unsafe code
 3. 깃허브에 있는 파일들을 옮깁니다.
 4. 스크립트를 실행합니다.
 
-# 스크립트
+# 스크립트 설명
 #!/bin/bash
 gcc -o vuln vuln.c //vuln.c 컴파일
 
